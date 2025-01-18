@@ -34,3 +34,8 @@ showconf: ## Show some config envs
 	$(foreach v, \
 			$(shell grep -E '^[A-Za-z][A-Za-z_-]* *.?=.*' $(MAKEFILE_LIST) | sed -E 's|^([A-Za-z][A-Za-z_-]*).*$$|\1|g' | sort), \
 			$(info $(shell printf '  ${CYAN}%-10s=${RESET} %s\n' '$(v)' "$(shell printf '%s' '$($(v))' | cat -v)" )))
+
+## Development
+
+run:  ## run app with docker compose
+	@docker compose up --build --remove-orphans --renew-anon-volumes

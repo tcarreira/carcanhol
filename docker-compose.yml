@@ -1,0 +1,12 @@
+services:
+  web:
+    image: my-project:dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: dev
+    init: true
+    volumes:
+      - .:/app
+    ports:
+      - 3000:3000
